@@ -20,7 +20,7 @@ ul{
   text-align: center;
 }
 
-/*Opening Section*/
+/************Opening Section****************/
 .starting-page{
   padding: 7em 0;
 }
@@ -48,11 +48,7 @@ ul{
 }
 
 
-.starting-page, .end-page{
-  display: none;
-}
-
-/*Game Section*/
+/***************Game Section***************/
 .game-page h2{
   background-color: #000;
   color: #fff;
@@ -103,4 +99,23 @@ ul{
 }
 
 
-/*Closing Section
+/************Closing Section**************/
+
+.end-page{
+  margin-top: 10em;
+}
+
+.end-page p{
+  font-size: 1.25em;
+}
+
+.new-game{
+  margin-top: 25px;
+  padding: .75em 7em;
+}
+
+.starting-page, .game-page{
+  display: none;
+}
+
+
