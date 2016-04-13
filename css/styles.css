@@ -1,4 +1,4 @@
-/*GLOBAL STYLES*/
+GLOBAL STYLES*/
 html {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -8,9 +8,15 @@ html {
   box-sizing: inherit;
 }
 
+ul{
+  padding: 0;
+  margin: 0;
+}
+
 .wrapper{
   width: 900px;
-  margin: 0 auto;
+
+  margin: 0 auto 10em auto;
   text-align: center;
 }
 
@@ -42,12 +48,59 @@ html {
 }
 
 
-.game-page, .end-page{
+.starting-page, .end-page{
   display: none;
 }
 
 /*Game Section*/
+.game-page h2{
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 1em 0;
+}
+
+.question-holder p{
+  margin-top: 50px;
+  font-size: 1.25em;
+}
+
+.curr-question, .answer{
+  padding: 1.75em 0;
+  background-color: #000;
+  color: #fff;
+}
+
+.curr-question{
+  margin: 1.5em 0;
+}
+
+.all-answers:after{ /*Clear the li floated items*/
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.answer{
+  display: inline-block;
+  float: left;
+  width: 45%;
+  margin: 1em 2.5%;
+  cursor: pointer;
+}
+
+.results-holder{
+  margin-top: 50px;
+}
+
+.wrong-right{
+  font-size: 2em;
+}
+
+.next{
+  margin-top: 25px;
+  padding: .75em 10em;
+}
 
 
-
-/*Closing Section*/
+/*Closing Section
