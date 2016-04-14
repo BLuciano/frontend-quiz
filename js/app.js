@@ -1,6 +1,13 @@
 $(document).ready(function(){
   var quiz = getQuiz();
-
+  
+  $(".num-btn").click(function(){
+    var questNum = $(this).text();
+    $(".starting-page").fadeOut(1000, function(){
+      $(".game-page").fadeIn(1500);
+      playGame();
+    });
+  });
 });
 
 function getQuiz(){
