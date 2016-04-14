@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var quiz = getQuiz();
-  var score, questsNum, currentQ, userQs, userAnswer;
+  var score, questsNum, userQs, userAnswer;
+  var currentQ, currentAnswers, correctAnswer, description;
 
   //Starts the game and resets data when replaying
   function playGame(){
@@ -8,7 +9,7 @@ $(document).ready(function(){
     score = 0;
     currentQ = 0;
     showQuestion();
-    setClickQuestions();
+    setClickAnswers();
   }
 
   /*Gets the specified number of questions from the 
@@ -33,15 +34,16 @@ $(document).ready(function(){
   function showQuestion(){
     var curr = userQs[currentQ];
     var question = curr.question;
-    var answers = curr.answers;
-    var description = userQs[currentQ].desc;
+    currentAnswers = curr.answers;
+    description = curr.desc;
+    correctAnswer = curr.correct;
     var html = "";
 
     html+= "<p>Question <span class='question-num'>" + (currentQ + 1) + "</span>/20</p>";
     html+= "<h3 class='curr-question'>" + question + "</h3>";
     html+= "<ul class='all-answers'>";
-    for(var i = 0; i < answers.length; i++){
-      html+= "<li class='answer'>" + answers[i] + "</li>";
+    for(var i = 0; i < currentAnswers.length; i++){
+      html+= "<li class='answer'>" + currentAnswers[i] + "</li>";
     }
     html+= "</ul>";
     $(".question-holder").html(html);
@@ -49,14 +51,30 @@ $(document).ready(function(){
   }
 
   //Adds click events on the question's answers
-  function setClickQuestions(){
+  function setClickAnswers(){
     //Grabs user answer and disables other options
     $('body').on('click', '.answer', function(){
       userAnswer = $(this).text();
       $('body').off('click', '.answer');
       $(".answer").addClass('disabled').css('cursor', 'default');
       $(this).removeClass('disabled').addClass('selected');
+      showAnswerSection();
     });
+  }
+
+  function showAnswerSection(){
+    var html = "", correct = "Wrong!";
+    if(userAnswer === currentAnswers[correctAnswer]){
+      score++;
+      correct = "Correct!";
+    }
+    html+= "<p class='wrong-right'><em>" + correct + "</em></p>";
+    html+= "<p>Score <span class='curr-score'>" + score + "</span>/20</p>";
+    html+= "<p class='description'><em>" + currentAnswers[correctAnswer];
+    html+= "</em>: " + description + "</p>";
+    html+= "<button class='next'>NEXT</button>";
+    $('.results-holder').html(html);
+    $('.results-holder').slideDown(1000);
   }
   
   /*Sets the number of questions to be played
