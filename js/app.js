@@ -1,22 +1,23 @@
 $(document).ready(function(){
   var quiz = getQuiz();
-  var score;
+  var score, questsNum, currentQ, userQs;
 
   //Starts the game and resets data when replaying
-  function playGame(num){
-    var totQuests = num;
-    var questions = getQuestions(totQuests);
+  function playGame(){
+    userQs = getQuestions();
     score = 0;
+    currentQ = 0;
+    showQuestion();
   }
 
   /*Gets the specified number of questions from the 
   quiz object in random order.*/ 
-  function getQuestions(num){
+  function getQuestions(){
     var count = 0, curr;
     var questions =[];
     var chosen = [];
 
-    while(count < num){
+    while(count < questsNum){
       curr = Math.floor(Math.random() * 7);
       if(chosen.indexOf(curr) === -1){
         chosen.push(curr);
@@ -26,14 +27,33 @@ $(document).ready(function(){
     }
     return questions;
   }
+
+  //Displays the current question to the user. 
+  function showQuestion(){
+    var curr = userQs[currentQ];
+    var question = curr.question;
+    var answers = curr.answers;
+    var description = userQs[currentQ].desc;
+    var html = "";
+
+    html+= "<p>Question <span class='question-num'>" + (currentQ + 1) + "</span>/20</p>";
+    html+= "<h3 class='curr-question'>" + question + "</h3>";
+    html+= "<ul class='all-answers'>";
+    for(var i = 0; i < answers.length; i++){
+      html+= "<li class='answer'>" + answers[i] + "</li>";
+    }
+    html+= "</ul>";
+    $(".question-holder").html(html);
+    currentQ++;
+  }
   
   /*Sets the number of questions to be played
   and starts the game.*/
   $(".num-btn").click(function(){
-    var questNum = $(this).text();
+    questsNum = $(this).text();
     $(".starting-page").fadeOut(1000, function(){
       $(".game-page").fadeIn(1500);
-      playGame(questNum);
+      playGame();
     });
   });
 

@@ -9,7 +9,7 @@ html{
   box-sizing: inherit;
 }
 
-.game-page, .end-page{
+.game-page, .end-page, .results-holder{
   display: none;
 }
 
