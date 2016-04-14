@@ -1,15 +1,47 @@
 $(document).ready(function(){
   var quiz = getQuiz();
+  var score;
+
+  //Starts the game and resets data when replaying
+  function playGame(num){
+    var totQuests = num;
+    var questions = getQuestions(totQuests);
+    score = 0;
+  }
+
+  /*Gets the specified number of questions from the 
+  quiz object in random order.*/ 
+  function getQuestions(num){
+    var count = 0, curr;
+    var questions =[];
+    var chosen = [];
+
+    while(count < num){
+      curr = Math.floor(Math.random() * 7);
+      if(chosen.indexOf(curr) === -1){
+        chosen.push(curr);
+        questions.push(quiz.questions[curr]);
+        count++;
+      }
+    }
+    return questions;
+  }
   
+  /*Sets the number of questions to be played
+  and starts the game.*/
   $(".num-btn").click(function(){
     var questNum = $(this).text();
     $(".starting-page").fadeOut(1000, function(){
       $(".game-page").fadeIn(1500);
-      playGame();
+      playGame(questNum);
     });
   });
+
+
 });
 
+
+//Holds all of the quiz questions information
 function getQuiz(){
   var quiz = {
     questions : [
