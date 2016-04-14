@@ -1,12 +1,18 @@
 GLOBAL STYLES*/
-html {
+html{
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+.game-page, .end-page{
+  display: none;
+}
+
 body{
   color: #ddd;
 }
@@ -22,6 +28,7 @@ ul{
   border: 3em solid #000;
   background: -webkit-radial-gradient(#4D0066, black);
   background: radial-gradient(#4D0066, black);
+  transition: border .25s;
 }
 
 .wrapper{
@@ -36,8 +43,8 @@ button{
   border-bottom: 2px solid #808000;
   border-right: 2px solid #808000;
   font-weight: 700;
-  -webkit-transition: all .5s;
-          transition: all .5s;
+  -webkit-transition: background-color .5s;
+          transition: background-color .5s;
 }
 button:hover{
   background-color: #808000;
@@ -81,7 +88,7 @@ button:focus{
 }
 
 .curr-question, .answer{
-  padding: 1.75em 0;
+  padding: 1.75em .5em;
   background-color: rgba(0,0,0, .75);
   color: #fff;
   outline: 1px solid #cccc00;
@@ -101,15 +108,15 @@ button:focus{
 
 .answer{
   display: inline-block;
-  float: left;
   width: 45%;
-  margin: 1em 2.5%;
+  margin: 1em 1.25%;
   cursor: pointer;
 }
 
 .answer:hover{
   background-color: rgba(0,0,0, .30);
 }
+
 .answer:active, .selected{
   background-color: #cccc00;
   opacity: .75;
@@ -125,12 +132,13 @@ button:focus{
 }
 
 .description{
-  width: 400px;
+  width: 50%;
   margin: 25px auto 50px auto;
 }
 
 .next{
-  padding: .75em 10em;
+  padding: .75em 1em;
+  width: 275px;
 }
 
 
@@ -146,15 +154,45 @@ button:focus{
 
 .new-game{
   margin-top: 25px;
-  padding: .75em 7em;
+  padding: .75em 1em;
+  width: 300px;
 }
-
-.game-page, .starting-page{
-  display: none;
-}
-
-
 
 /************MEDIA QUERIES********/
+@media screen and (max-width: 1050px){
+  #content{
+    border: 1em solid #000;
+  }
+
+  .wrapper{
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .answer{
+    width: 85%;
+    padding: 1.25em .5em;
+  }
+
+  .description{
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .num-btn{
+    width: 75%;
+    margin: .5em auto;
+  }
+
+  .next, .new-game{
+    width: 75%;
+  }
+
+  .end-page p{
+    font-size: 1.15em;
+  }
+}
 
 
