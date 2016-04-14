@@ -9,9 +9,9 @@ html{
   box-sizing: inherit;
 }
 
-.game-page, .end-page{
+/*.game-page, .end-page{
   display: none;
-}
+}*/
 
 body{
   color: #ddd;
