@@ -8,16 +8,20 @@ html {
   box-sizing: inherit;
 }
 body{
-  background-color: #4D0066;
   color: #ddd;
-  border: 3em solid #000;
-  background: -webkit-radial-gradient(#4D0066, black);
-  background: radial-gradient(#4D0066, black);
 }
 
 ul{
   padding: 0;
   margin: 0;
+}
+
+#content{
+  min-height: 100vh;
+  background-color: #4D0066;
+  border: 3em solid #000;
+  background: -webkit-radial-gradient(#4D0066, black);
+  background: radial-gradient(#4D0066, black);
 }
 
 .wrapper{
@@ -104,9 +108,9 @@ button:focus{
 }
 
 .answer:hover{
-  background-color: rgba(0,0,0, .90);
+  background-color: rgba(0,0,0, .30);
 }
-.answer:active{
+.answer:active, .selected{
   background-color: #cccc00;
   opacity: .75;
   color: #000;
@@ -120,8 +124,12 @@ button:focus{
   font-size: 2em;
 }
 
+.description{
+  width: 400px;
+  margin: 25px auto 50px auto;
+}
+
 .next{
-  margin-top: 25px;
   padding: .75em 10em;
 }
 
@@ -129,7 +137,7 @@ button:focus{
 /************Closing Section**************/
 
 .end-page{
-  margin-top: 10em;
+  margin-top: 12em;
 }
 
 .end-page p{
@@ -141,8 +149,12 @@ button:focus{
   padding: .75em 7em;
 }
 
-.end-page, .starting-page{
+.game-page, .starting-page{
   display: none;
 }
+
+
+
+/************MEDIA QUERIES********/
 
 
