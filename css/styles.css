@@ -7,6 +7,13 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+body{
+  background-color: #4D0066;
+  color: #ddd;
+  border: 3em solid #000;
+  background: -webkit-radial-gradient(#4D0066, black);
+  background: radial-gradient(#4D0066, black);
+}
 
 ul{
   padding: 0;
@@ -15,9 +22,24 @@ ul{
 
 .wrapper{
   width: 900px;
-
   margin: 0 auto 10em auto;
   text-align: center;
+}
+
+button{
+  background-color: #cccc00;
+  border: none;
+  border-bottom: 2px solid #808000;
+  border-right: 2px solid #808000;
+  font-weight: 700;
+  -webkit-transition: all .5s;
+          transition: all .5s;
+}
+button:hover{
+  background-color: #808000;
+}
+button:focus{
+  outline: none;
 }
 
 /************Opening Section****************/
@@ -114,7 +136,7 @@ ul{
   padding: .75em 7em;
 }
 
-.starting-page, .game-page{
+.end-page, .game-page{
   display: none;
 }
 
