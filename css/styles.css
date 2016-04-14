@@ -117,10 +117,16 @@ button:focus{
   background-color: rgba(0,0,0, .30);
 }
 
-.answer:active, .selected{
+.answer:active, .selected, .selected:hover{
   background-color: #cccc00;
   opacity: .75;
   color: #000;
+}
+
+.disabled:hover, .disabled:active{
+  background-color: rgba(0,0,0, .75);
+  opacity: 1;
+  color: #fff;
 }
 
 .results-holder{

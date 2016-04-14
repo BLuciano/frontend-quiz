@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var quiz = getQuiz();
-  var score, questsNum, currentQ, userQs;
+  var score, questsNum, currentQ, userQs, userAnswer;
 
   //Starts the game and resets data when replaying
   function playGame(){
@@ -8,6 +8,7 @@ $(document).ready(function(){
     score = 0;
     currentQ = 0;
     showQuestion();
+    setClickQuestions();
   }
 
   /*Gets the specified number of questions from the 
@@ -46,6 +47,17 @@ $(document).ready(function(){
     $(".question-holder").html(html);
     currentQ++;
   }
+
+  //Adds click events on the question's answers
+  function setClickQuestions(){
+    //Grabs user answer and disables other options
+    $('body').on('click', '.answer', function(){
+      userAnswer = $(this).text();
+      $('body').off('click', '.answer');
+      $(".answer").addClass('disabled').css('cursor', 'default');
+      $(this).removeClass('disabled').addClass('selected');
+    });
+  }
   
   /*Sets the number of questions to be played
   and starts the game.*/
@@ -56,8 +68,6 @@ $(document).ready(function(){
       playGame();
     });
   });
-
-
 });
 
 
@@ -73,7 +83,7 @@ function getQuiz(){
     },
     {
       question : "Which doctype is correct for HTML5?",
-      answers : ["<!DOCTYPE HTML5>", "<!DOCTYPE html>", "<!DOCTYPE>"],
+      answers : ["!DOCTYPE HTML5", "!DOCTYPE html", "!DOCTYPE"],
       correct : 1,
       desc : "Was released with the fifth edition of HTML. Made simpler and shorter than before."
     },
