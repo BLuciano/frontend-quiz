@@ -19,7 +19,7 @@ $(document).ready(function(){
     var chosen = [];
 
     while(count < questsNum){
-      curr = Math.floor(Math.random() * 7);
+      curr = Math.floor(Math.random() * 21);
       if(chosen.indexOf(curr) === -1){
         chosen.push(curr);
         questions.push(quiz.questions[curr]);
