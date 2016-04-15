@@ -165,7 +165,86 @@ function getQuiz(){
       answers : ["variable", "varies", "string", "var"],
       correct : 3,
       desc : "It is used to hold any JavaScript data type. In other languages different keywords are used for different data types."
-    }
+    },
+    {
+      question : "var a = []; What does 'typeof a' return?",
+      answers : ['object', 'array', 'string', 'undefined'],
+      correct : 0,
+      desc : "Arrays are considered a special type of object in JavaScript"
+    },
+    {
+      question : "Are CSS property names case-sensitive?",
+      answers : ['True', 'False'],
+      correct : 1,
+      desc : "Although not case-sensitive, it is recommeneded to always use lower case names!"
+    },
+    {
+      question : "Does setting margin-top and margin-bottom have an affect on an inline element?",
+      answers : ['True', 'False'],
+      correct : 1,
+      desc : "Only block and inline-block elements are affected by these settings"
+    },
+    {
+      question : "What is not an HTML5 element?",
+      answers : ['section', 'header', 'blink', 'main'],
+      correct : 2,
+      desc : "Other elements include footer, video, audio, article and many more!"
+    },
+    {
+      question : "What is jQuery?",
+      answers : ["A framework", "A library", "jQuery?", "none of these"],
+      correct : 1,
+      desc : "Straight from their website: 'jQuery is a fast, small, and feature-rich JavaScript library'."
+    },
+    {
+      question : "How can you print information to the console?",
+      answers : ["console(info)", "console.log(info)", "print(info)"],
+      correct : 1,
+      desc : "Other console methods are console.dir(), console.time() and others."
+    },
+    {
+      question : "Which is not a JavaScript data type?",
+      answers : ['boolean', 'undefined', 'string', 'double'],
+      correct : 3,
+      desc : "Although not a part of JavaScript, double is used in other languages such as C++ and Java!"
+    },
+    {
+      question : "Which of the following function of String object returns the character at the specified index?",
+      answers : ['charAt()', 'charCodeAt()', 'concat()', 'indexOf()'],
+      correct : 0,
+      desc : " "
+    },
+    {
+      question : "Which of the following function of Array object removes the last element from an array and returns that element?",
+      answers : ['push()', 'join()', 'pop()', 'map()'],
+      correct : 2,
+      desc : "Pop removes the last element while push adds an element to the end!"
+    },
+    {
+      question : "what value is given for the left margin: <br/> margin: 5px 10px 3px 8px;",
+      answers : ['5px', '8px', '3px', '10px'],
+      correct : 1,
+      desc : "The CSS shorthand property follows the top, right, bottom, left syntax."
+    },
+    {
+      question : "What property is used to change the text color of an element?",
+      answers : ['fontcolor', 'textcolor', 'color'],
+      correct : 2,
+      desc : "And colors can be defined with keywords such as red, in hex (#000) or rgb (rgb(0,0,0))."
+    },
+    {
+      question : "The # symbol specifies that the selector is?",
+      answers : ['class', 'tag', 'id', 'first'],
+      correct : 2,
+      desc : "And there can only be one unique id per HTML page!"
+    },
+    {
+      question : "Which snippet of CSS is commonly used to center a website horizontally?",
+      answers : ['site-align: center;', 'margin: center;', 'margin: auto 0;', 'margin: 0 auto;'],
+      correct : 3,
+      desc : "Just let the magic do it's work!"
+    },
+
     ]
   };
   return quiz;
