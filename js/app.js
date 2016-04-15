@@ -81,7 +81,10 @@ $(document).ready(function(){
   }
 
   function showEndPage(){
-    $(".final-score").html(score + "/" + userQs.length);
+    $(".game-page").fadeOut(1000, function(){
+      $(".final-score").html(score + "/" + userQs.length);
+      $(".end-page").fadeIn(1500);
+    });
   }
   
   /*Sets the number of questions to be played
@@ -99,11 +102,9 @@ $(document).ready(function(){
     if(answerSelected){
       answerSelected = false;
       $('.results-holder').fadeOut(500);
+
       if(currentQ +1 > userQs.length){
-        $(".game-page").fadeOut(1000, function(){
-          showEndPage();
-          $(".end-page").fadeIn(1500);
-        });
+        showEndPage();
       } else{
         showQuestion();
       }
