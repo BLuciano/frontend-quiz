@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var quiz = getQuiz();
+  var quiz = getQuiz(), answerSelected = false;
   var score, questsNum, userQs, userAnswer;
   var currentQ, currentAnswers, correctAnswer, description;
 
@@ -9,7 +9,6 @@ $(document).ready(function(){
     score = 0;
     currentQ = 0;
     showQuestion();
-    setClickAnswers();
   }
 
   /*Gets the specified number of questions from the 
@@ -39,7 +38,8 @@ $(document).ready(function(){
     correctAnswer = curr.correct;
     var html = "";
 
-    html+= "<p>Question <span class='question-num'>" + (currentQ + 1) + "</span>/20</p>";
+    html+= "<p>Question <span class='question-num'>";  
+    html+= (currentQ + 1) + "</span>/" + userQs.length + "</p>";
     html+= "<h3 class='curr-question'>" + question + "</h3>";
     html+= "<ul class='all-answers'>";
     for(var i = 0; i < currentAnswers.length; i++){
@@ -48,6 +48,7 @@ $(document).ready(function(){
     html+= "</ul>";
     $(".question-holder").html(html);
     currentQ++;
+    setClickAnswers();
   }
 
   //Adds click events on the question's answers
@@ -59,6 +60,7 @@ $(document).ready(function(){
       $(".answer").addClass('disabled').css('cursor', 'default');
       $(this).removeClass('disabled').addClass('selected');
       showAnswerSection();
+      answerSelected = true;
     });
   }
 
@@ -69,12 +71,17 @@ $(document).ready(function(){
       correct = "Correct!";
     }
     html+= "<p class='wrong-right'><em>" + correct + "</em></p>";
-    html+= "<p>Score <span class='curr-score'>" + score + "</span>/20</p>";
+    html+= "<p>Score <span class='curr-score'>"; 
+    html+= score + "</span>/" + userQs.length + "</p>";
     html+= "<p class='description'><em>" + currentAnswers[correctAnswer];
     html+= "</em>: " + description + "</p>";
     html+= "<button class='next'>NEXT</button>";
     $('.results-holder').html(html);
     $('.results-holder').slideDown(1000);
+  }
+
+  function showEndPage(){
+    $(".final-score").html(score + "/" + userQs.length);
   }
   
   /*Sets the number of questions to be played
@@ -84,6 +91,29 @@ $(document).ready(function(){
     $(".starting-page").fadeOut(1000, function(){
       $(".game-page").fadeIn(1500);
       playGame();
+    });
+  });
+
+  //Shows next question or takes user to ending page if end of game
+  $('body').on('click', '.next', function(){
+    if(answerSelected){
+      answerSelected = false;
+      $('.results-holder').fadeOut(500);
+      if(currentQ +1 > userQs.length){
+        $(".game-page").fadeOut(1000, function(){
+          showEndPage();
+          $(".end-page").fadeIn(1500);
+        });
+      } else{
+        showQuestion();
+      }
+    }
+  });
+
+  //Takes user back to starting section
+  $('.new-game').click(function(){
+    $(".end-page").fadeOut(1000, function(){
+      $(".starting-page").fadeIn(1500);
     });
   });
 });
@@ -107,7 +137,7 @@ function getQuiz(){
     },
     {
       question : "Which HTML5 element defines navigation links?",
-      answers : ["avigation", "inks", "nav", "navigate"],
+      answers : ["avigation", "links", "nav", "navigate"],
       correct : 2,
       desc : "Introduced with HTML5, this element is intended to be used with major blocks of navigation links."
     },
