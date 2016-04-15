@@ -19,7 +19,7 @@ $(document).ready(function(){
     var chosen = [];
 
     while(count < questsNum){
-      curr = Math.floor(Math.random() * 21);
+      curr = Math.floor(Math.random() * 20);
       if(chosen.indexOf(curr) === -1){
         chosen.push(curr);
         questions.push(quiz.questions[curr]);
@@ -212,7 +212,7 @@ function getQuiz(){
       question : "Which of the following function of String object returns the character at the specified index?",
       answers : ['charAt()', 'charCodeAt()', 'concat()', 'indexOf()'],
       correct : 0,
-      desc : " "
+      desc : "While charAt() returns the char of specified index, charCodeAt() returns the unicode"
     },
     {
       question : "Which of the following function of Array object removes the last element from an array and returns that element?",
