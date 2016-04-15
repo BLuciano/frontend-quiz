@@ -243,8 +243,7 @@ function getQuiz(){
       answers : ['site-align: center;', 'margin: center;', 'margin: auto 0;', 'margin: 0 auto;'],
       correct : 3,
       desc : "Just let the magic do it's work!"
-    },
-
+    }
     ]
   };
   return quiz;
